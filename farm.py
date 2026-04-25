@@ -74,7 +74,7 @@ while running:
         pygame.draw.rect(screen, (139, 69, 19), shipping_box_rect)
         screen.blit(ui.font.render("出荷箱", True, (255,255,255)), (705,530))
         player.draw(screen)
-        ui.draw(screen, money, inventory, current_type_index, player_rect, shipping_box_rect)
+        ui.draw(screen, money, inventory, dishes, current_type_index, player_rect, shipping_box_rect)
 
     elif game_state == "cooking":
         cooking.draw(screen)

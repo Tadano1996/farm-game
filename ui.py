@@ -10,7 +10,7 @@ class UI:
     def __init__(self):
         self.font = pygame.font.SysFont("msgothic", 24)
 
-    def draw(self, screen, money, inventory, current_type_index, player_rect, shipping_box_rect):
+    def draw(self, screen, money, inventory, dishes, current_type_index, player_rect, shipping_box_rect):
         screen.blit(self.font.render(f"所持金: {money}円", True, (255, 255, 255)), (20, 20))
 
         if player_rect.colliderect(shipping_box_rect):
@@ -23,4 +23,13 @@ class UI:
         for name, count in inventory.items():
             color = (255, 255, 255) if VEGETABLE_TYPES[current_type_index]["name"] != name else (255, 255, 0)
             screen.blit(self.font.render(f"{name}: {count}個", True, color), (600, y_offset))
+            y_offset += 30
+
+        # 料理表示
+        y_offset += 20
+        screen.blit(self.font.render("料理", True, (255,255,0)), (600, y_offset))
+        y_offset += 30
+
+        for name, count in dishes.items():
+            screen.blit(self.font.render(f"{name}: {count}個", True, (200,255,200)), (600, y_offset))
             y_offset += 30
